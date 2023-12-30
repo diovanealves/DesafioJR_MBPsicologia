@@ -30,6 +30,9 @@ export default function MyDialog({ title, bimester }: DialogProps) {
     formState: { errors },
     setValue,
   } = useForm({
+    defaultValues: {
+      bimestre: bimester,
+    },
     resolver: yupResolver(NoteSchema),
   })
 
@@ -38,7 +41,6 @@ export default function MyDialog({ title, bimester }: DialogProps) {
   }
 
   const onSubmit = async (data: DisciplineData) => {
-    setValue('bimestre', bimester)
     const result = await createNote(data)
     if (result) {
       setOpen(false)
