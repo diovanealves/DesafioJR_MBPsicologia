@@ -1,3 +1,4 @@
+import UseApi from '@/hooks/useApi'
 import disciplines from '@/mocks/discipline'
 import { NoteSchema } from '@/schemas/NewNoteValidation'
 import { DisciplineData } from '@/schemas/NoteData'
@@ -22,6 +23,7 @@ interface DialogProps {
 
 export default function MyDialog({ title, bimester }: DialogProps) {
   const [open, setOpen] = useState(false)
+  const { createNote } = UseApi()
   const {
     register,
     handleSubmit,
@@ -37,7 +39,11 @@ export default function MyDialog({ title, bimester }: DialogProps) {
 
   const onSubmit = async (data: DisciplineData) => {
     setValue('bimestre', bimester)
-    console.log(data)
+    const result = await createNote(data)
+    if (result) {
+      setOpen(false)
+      setValue('disciplina', '')
+    }
   }
 
   return (
