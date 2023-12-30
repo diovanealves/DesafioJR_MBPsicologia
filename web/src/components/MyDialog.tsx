@@ -1,5 +1,6 @@
 import disciplines from '@/mocks/discipline'
 import { NoteSchema } from '@/schemas/NewNoteValidation'
+import { DisciplineData } from '@/schemas/NoteData'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Plus } from 'lucide-react'
 import { useState } from 'react'
