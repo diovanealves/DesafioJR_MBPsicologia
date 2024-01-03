@@ -28,7 +28,7 @@ const MyButton = forwardRef<HTMLButtonElement, MyButtonProps>(function MyButton(
           </Button>
         </TooltipTrigger>
 
-        {mobile && (
+        {mobile && mobileText && (
           <TooltipContent>
             <p>{mobileText}</p>
           </TooltipContent>
