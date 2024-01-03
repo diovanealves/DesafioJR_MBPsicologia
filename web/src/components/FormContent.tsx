@@ -5,6 +5,7 @@ import UseApi from '@/hooks/useApi'
 import { NoteSchema } from '@/schemas/NewNoteValidation'
 import { DisciplineData } from '@/schemas/NoteData'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useState } from 'react'
 import DialogCard from './DialogCard'
 import MyButton from './MyButton'
 
@@ -14,6 +15,9 @@ interface FormProps {
 }
 
 export default function FormContent({ bimester, onClose }: FormProps) {
+  const [selectedDiscipline, setSelectedDiscipline] = useState<number | null>(
+    null,
+  )
   const { createNote } = UseApi()
   const {
     register,
@@ -43,12 +47,17 @@ export default function FormContent({ bimester, onClose }: FormProps) {
   return (
     <>
       <div className="grid grid-cols-2 gap-5 mx-auto mt-5">
-        {disciplines.map((discipline, i) => (
+        {disciplines.map((discipline) => (
           <DialogCard
-            key={i}
+            key={discipline.id}
+            id={discipline.id}
+            selectedId={selectedDiscipline}
             title={discipline.title}
             background={discipline.background}
-            onClick={() => setValue('disciplina', discipline.title)}
+            onClick={() => {
+              setValue('disciplina', discipline.title)
+              setSelectedDiscipline(discipline.id)
+            }}
           />
         ))}
       </div>
