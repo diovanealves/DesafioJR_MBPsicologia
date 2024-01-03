@@ -10,7 +10,10 @@ export default function DialogCard({
 }: DialogCardProps) {
   return (
     <button
-      className={`flex items-center justify-center w-[130px] h-[53px] rounded-[20px] text-white text-lg font-medium bg-card-${background}/20 hover:bg-card-${background}`}
+      className="flex items-center justify-center w-[130px] h-[53px] rounded-[20px] text-white text-lg font-medium opacity-20 hover:opacity-100"
+      style={{
+        backgroundColor: background,
+      }}
       onClick={onClick}
     >
       {title}
