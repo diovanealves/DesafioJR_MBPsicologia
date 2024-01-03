@@ -1,5 +1,7 @@
 import { Plus } from 'lucide-react'
+import { useState } from 'react'
 import MyButton from './MyButton'
+import MyDialogContent from './MyDialogContent'
 import { Dialog, DialogTrigger } from './ui/dialog'
 
 interface DialogProps {
@@ -8,8 +10,10 @@ interface DialogProps {
 }
 
 export default function MyDialog({ title, bimester }: DialogProps) {
+  const [isClose, setIsClose] = useState(false)
+
   return (
-    <Dialog>
+    <Dialog open={isClose} onOpenChange={setIsClose}>
       <DialogTrigger asChild>
         {window.innerWidth < 768 ? (
           <MyButton mobile mobileText="Adicionar">
@@ -22,6 +26,12 @@ export default function MyDialog({ title, bimester }: DialogProps) {
           </MyButton>
         )}
       </DialogTrigger>
+
+      <MyDialogContent
+        title={title}
+        bimester={bimester}
+        onClose={() => setIsClose(false)}
+      />
     </Dialog>
   )
 }

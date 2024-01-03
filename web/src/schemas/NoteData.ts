@@ -1,5 +1,5 @@
 export interface DisciplineData {
-  id: string
+  id?: string
   bimestre?: string
   disciplina: string
   nota: number
