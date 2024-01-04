@@ -50,6 +50,10 @@ module.exports = {
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
+          biology: '#CC4090',
+          art: '#05A2C2',
+          geography: '#C26719',
+          sociology: '#9B19C2',
         },
       },
       borderRadius: {

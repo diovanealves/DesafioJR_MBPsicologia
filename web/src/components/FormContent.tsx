@@ -53,7 +53,6 @@ export default function FormContent({ bimester, onClose }: FormProps) {
             id={discipline.id}
             selectedId={selectedDiscipline}
             title={discipline.title}
-            background={discipline.background}
             onClick={() => {
               setValue('disciplina', discipline.title)
               setSelectedDiscipline(discipline.id)

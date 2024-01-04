@@ -1,8 +1,13 @@
-const disciplines = [
-  { id: 1, title: 'Biologia', background: '#CC4090' },
-  { id: 2, title: 'Artes', background: '#05A2C2' },
-  { id: 3, title: 'Geografia', background: '#C26719' },
-  { id: 4, title: 'Sociologia', background: '#9B19C2' },
+interface Discipline {
+  id: number
+  title: 'Biologia' | 'Artes' | 'Geografia' | 'Sociologia'
+}
+
+const disciplines: Discipline[] = [
+  { id: 1, title: 'Biologia' },
+  { id: 2, title: 'Artes' },
+  { id: 3, title: 'Geografia' },
+  { id: 4, title: 'Sociologia' },
 ]
 
 export default disciplines
