@@ -1,7 +1,7 @@
 import disciplines from '@/mocks/discipline'
 import { useForm } from 'react-hook-form'
 
-import UseApi from '@/hooks/useApi'
+import UseNote from '@/hooks/useNote'
 import { NoteSchema } from '@/schemas/NewNoteValidation'
 import { DisciplineData } from '@/schemas/NoteData'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -18,7 +18,7 @@ export default function FormContent({ bimester, onClose }: FormProps) {
   const [selectedDiscipline, setSelectedDiscipline] = useState<number | null>(
     null,
   )
-  const { createNote } = UseApi()
+  const { createNote } = UseNote()
   const {
     register,
     handleSubmit,
