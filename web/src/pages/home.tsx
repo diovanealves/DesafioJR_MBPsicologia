@@ -1,14 +1,29 @@
 import MyDialog from '@/components/MyDialog'
+import NoteCard from '@/components/NoteCard'
+import UseNote from '@/hooks/useNote'
 
 export default function Home() {
-  return (
-    <div className="px-6 py-32">
-      <div className="flex flex-1 items-center justify-between">
-        <h1 className="text-lg font-medium">Bimestre 1</h1>
-        <MyDialog title="Bimestre 1" bimester="Primeiro" />
-      </div>
+  const { noteByBimester } = UseNote()
 
-      <div className="grid grid-cols-2 gap-2 mt-6"></div>
+  return (
+    <div className="px-5 py-32">
+      {noteByBimester.map((bimester, i) => (
+        <div key={i}>
+          <div className="flex items-center justify-between">
+            <h1 className="text-lg font-medium">Bimestre {i + 1}</h1>
+            <MyDialog
+              title={`Bimestre ${i + 1}`}
+              bimester={bimester.bimester}
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-2 my-6">
+            {bimester.notes.map((notes, index) => (
+              <NoteCard key={index} variant={notes.disciplina} {...notes} />
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
