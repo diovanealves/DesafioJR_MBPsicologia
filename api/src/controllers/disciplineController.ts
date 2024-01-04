@@ -13,6 +13,23 @@ export default class DisciplineController {
     }
   }
 
+  async getByBimester(req: Request, res: Response) {
+    try {
+      const { bimester } = req.body
+
+      const result = await prisma.resultado.findMany({
+        where: {
+          bimestre: bimester,
+        },
+      })
+      return res.send(result)
+    } catch (error) {
+      return res
+        .status(500)
+        .send({ error: 'Erro ao fazer a busca por bimestre' })
+    }
+  }
+
   async create(req: Request, res: Response) {
     const disciplineData = req.body
     try {

@@ -13,6 +13,11 @@ router.post(
 
 router.get('/disciplina', disciplineController.get.bind(disciplineController))
 
+router.get(
+  '/bimestre/busca',
+  disciplineController.getByBimester.bind(disciplineController),
+)
+
 router.delete(
   '/disciplina/:id',
   disciplineController.delete.bind(disciplineController),
