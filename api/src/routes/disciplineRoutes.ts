@@ -14,7 +14,7 @@ router.post(
 router.get('/disciplina', disciplineController.get.bind(disciplineController))
 
 router.get(
-  '/bimestre/busca',
+  '/disciplina/:bimester/busca',
   disciplineController.getByBimester.bind(disciplineController),
 )
 

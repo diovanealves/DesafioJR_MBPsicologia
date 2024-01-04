@@ -1,3 +1,4 @@
+import { TipoBimestre } from '@prisma/client'
 import { Request, Response } from 'express'
 import { prisma } from '../lib/prisma'
 
@@ -14,12 +15,11 @@ export default class DisciplineController {
   }
 
   async getByBimester(req: Request, res: Response) {
+    const { bimester } = req.params
     try {
-      const { bimester } = req.body
-
       const result = await prisma.resultado.findMany({
         where: {
-          bimestre: bimester,
+          bimestre: bimester as TipoBimestre,
         },
       })
       return res.send(result)
