@@ -15,3 +15,8 @@ export interface FormContentProps {
   criadoEm?: Date
   atualizadoEm?: Date
 }
+
+export interface BimesterData {
+  bimester: string
+  notes: DisciplineData[]
+}
