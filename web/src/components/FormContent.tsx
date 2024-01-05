@@ -71,6 +71,7 @@ export default function FormContent({ bimester, onClose }: FormProps) {
       <input
         type="number"
         placeholder="5.4"
+        inputMode="numeric"
         className={`bg-transparent w-[101px] h-[48px] rounded-xl placeholder:text-[#6D6D6D] px-4 py-3 mt-2 focus:outline-none appearance-none border-2 ${
           errors.nota && ' border-red-500 transition-colors'
         }`}
