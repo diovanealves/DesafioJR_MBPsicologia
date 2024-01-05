@@ -1,7 +1,12 @@
+import { DataProvider } from './context/dataContext'
 import Home from './pages/home'
 
 function App() {
-  return <Home />
+  return (
+    <DataProvider>
+      <Home />
+    </DataProvider>
+  )
 }
 
 export default App
