@@ -1,14 +1,21 @@
 import MyDialog from '@/components/MyDialog'
 import NoteCard from '@/components/NoteCard'
+import { useDataContext } from '@/context/dataContext'
 import useNote from '@/hooks/useNote'
 import { AlertTriangle } from 'lucide-react'
+import { useEffect } from 'react'
 
 export default function Home() {
-  const { noteByBimester } = useNote()
+  const { getNotes } = useNote()
+  const { searchData } = useDataContext()
+
+  useEffect(() => {
+    getNotes()
+  }, [getNotes])
 
   return (
     <div className="px-5 py-10">
-      {noteByBimester.map((bimester, i) => (
+      {searchData.map((bimester, i) => (
         <div key={i}>
           <div className="flex items-center justify-between">
             <h1 className="text-lg font-medium">Bimestre {i + 1}</h1>
