@@ -1,7 +1,7 @@
 export interface DisciplineData {
   id?: string
   bimestre?: string
-  disciplina: 'Biologia' | 'Artes' | 'Geografia' | 'Sociologia'
+  disciplina: string
   nota: number
   criadoEm?: Date
   atualizadoEm?: Date

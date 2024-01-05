@@ -11,10 +11,8 @@ class NoteService {
     return await Api.post('/disciplina', { bimestre, disciplina, nota })
   }
 
-  async getNotesByBimester(
-    bimester: string,
-  ): Promise<AxiosResponse<DisciplineData>> {
-    return await Api.get(`/disciplina/${bimester}/busca`)
+  async deleteNote(id: string) {
+    return await Api.delete(`/disciplina/${id}`)
   }
 }
 export default new NoteService()
