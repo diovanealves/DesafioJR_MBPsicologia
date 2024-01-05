@@ -14,7 +14,7 @@ export default function DialogCard({
   onClick,
 }: DialogCardProps) {
   const dialogCardVariants = cva(
-    `w-[130px] h-[53px] rounded-[20px] text-white text-lg font-medium mx-auto ${
+    `w-full h-[53px] rounded-[20px] text-white text-lg font-medium mx-auto ${
       selectedId === id ? 'opacity-100' : 'opacity-20'
     }`,
     {

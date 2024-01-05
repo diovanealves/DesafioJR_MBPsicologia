@@ -46,7 +46,7 @@ export default function FormContent({ bimester, onClose }: FormProps) {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-5 mx-auto mt-5">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mx-auto mt-5">
         {disciplines.map((discipline) => (
           <DialogCard
             key={discipline.id}
