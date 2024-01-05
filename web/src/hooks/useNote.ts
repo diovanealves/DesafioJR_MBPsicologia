@@ -1,11 +1,51 @@
 import ShowMyToast from '@/components/ShowMyToast'
-import { DisciplineData } from '@/schemas/NoteData'
+import { DisciplineData, FormContentProps } from '@/schemas/NoteData'
 import noteService from '@/services/noteService'
 import { isAxiosError } from 'axios'
-import { useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+
+interface BimesterData {
+  bimester: string
+  notes: DisciplineData[]
+}
 
 const useNote = () => {
-  const createNote = useCallback(async (data: DisciplineData) => {
+  const [noteByBimester, setNoteByBimester] = useState<BimesterData[]>([])
+
+  useEffect(() => {
+    async function getNotes() {
+      try {
+        const bimester = ['Primeiro', 'Segundo', 'Terceiro', 'Quarto']
+        const notasPromises = bimester.map(async (bimester) =>
+          noteService.getNotesByBimester(bimester),
+        )
+        const notes = await Promise.all(notasPromises)
+
+        const bimesterData: BimesterData[] = bimester.reduce<BimesterData[]>(
+          (acc, currentBimester, i) => {
+            const filteredNotes = notes[i].data.filter(
+              (note: DisciplineData) => note.bimestre === currentBimester,
+            )
+            acc.push({
+              bimester: currentBimester,
+              notes: filteredNotes,
+            })
+
+            return acc
+          },
+          [],
+        )
+
+        setNoteByBimester(bimesterData)
+      } catch (error) {
+        ShowMyToast('Erro ao buscar notas', 'destructive')
+      }
+    }
+
+    getNotes()
+  }, [])
+
+  const createNote = useCallback(async (data: FormContentProps) => {
     try {
       const response = await noteService.createNote(data)
 
@@ -45,7 +85,7 @@ const useNote = () => {
     }
   }, [])
 
-  return { createNote, deleteNote }
+  return { noteByBimester, createNote, deleteNote }
 }
 
 export default useNote

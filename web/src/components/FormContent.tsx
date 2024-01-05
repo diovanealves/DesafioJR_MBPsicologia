@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 
 import UseNote from '@/hooks/useNote'
 import { NoteSchema } from '@/schemas/NewNoteValidation'
-import { DisciplineData } from '@/schemas/NoteData'
+import { FormContentProps } from '@/schemas/NoteData'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useState } from 'react'
 import DialogCard from './DialogCard'
@@ -36,7 +36,7 @@ export default function FormContent({ bimester, onClose }: FormProps) {
     setValue('disciplina', '')
   }
 
-  async function onsubmit(data: DisciplineData) {
+  async function onsubmit(data: FormContentProps) {
     const result = await createNote(data)
     reset({ disciplina: '', nota: 0 })
     if (result) {
