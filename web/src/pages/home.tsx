@@ -14,7 +14,7 @@ export default function Home() {
   }, [getNotes])
 
   return (
-    <div className="px-5 py-10">
+    <div className="px-5 py-10 max-w-7xl mx-auto">
       {searchData.map((bimester, i) => (
         <div key={i}>
           <div className="flex items-center justify-between">
@@ -37,7 +37,7 @@ export default function Home() {
                 <NoteCard key={notes.id} {...notes} />
               ))
             ) : (
-              <div className="flex justify-center items-center gap-2">
+              <div className="flex justify-center items-center gap-2 h-28">
                 <AlertTriangle className="w-10 h-10 text-red-500" />
                 <h1 className="font-medium">
                   Ainda não tem nenhuma nota cadastrada
