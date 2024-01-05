@@ -28,7 +28,7 @@ export default function Home() {
           <div
             className={`my-6 ${
               bimester.notes.length > 0
-                ? 'grid grid-cols-2 gap-2 '
+                ? 'grid grid-cols-2 gap-4 my-6 md:grid-cols-4'
                 : 'text-center'
             }`}
           >
