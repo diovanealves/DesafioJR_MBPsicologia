@@ -5,16 +5,17 @@ interface DialogCardProps {
   id: number
   selectedId: number | null
   title: 'Biologia' | 'Artes' | 'Geografia' | 'Sociologia'
-  onClick?: () => void
+  onChange: (id: number) => void
 }
+
 export default function DialogCard({
   id,
   selectedId,
   title,
-  onClick,
+  onChange,
 }: DialogCardProps) {
   const dialogCardVariants = cva(
-    `w-full h-[53px] rounded-[20px] text-white text-lg font-medium mx-auto ${
+    `flex items-center justify-center w-full h-[53px] rounded-[20px] text-white text-lg font-medium mx-auto ${
       selectedId === id ? 'opacity-100' : 'opacity-20'
     }`,
     {
@@ -30,11 +31,16 @@ export default function DialogCard({
   )
 
   return (
-    <button
-      className={clsx(dialogCardVariants({ variant: title }))}
-      onClick={onClick}
-    >
-      {title}
-    </button>
+    <label className="cursor-pointer">
+      <input
+        type="checkbox"
+        className="hidden"
+        checked={id === selectedId}
+        onChange={() => onChange(id)}
+      />
+      <div className={clsx(dialogCardVariants({ variant: title }))}>
+        {title}
+      </div>
+    </label>
   )
 }
