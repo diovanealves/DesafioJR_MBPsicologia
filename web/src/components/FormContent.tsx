@@ -32,10 +32,6 @@ export default function FormContent({ bimester, onClose }: FormProps) {
     resolver: yupResolver(NoteSchema),
   })
 
-  if (errors.nota) {
-    setValue('disciplina', '')
-  }
-
   async function onsubmit(data: FormContentProps) {
     const result = await createNote(data)
     reset({ disciplina: '', nota: 0 })
